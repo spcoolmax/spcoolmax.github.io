@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "type": "note",
+      "title": "Hello World",
+      "slug": "Diary/Hello_World",
+      "path": "/notes/Diary/Hello_World",
+      "date": "2025-11-08",
+      "tags": [
+        "NothingToSay"
+      ],
+      "category": "Diary",
+      "content": "\r\n好久没写了，希望这次可以坚持下去\r\n"
+    },
+    {
+      "type": "photograph",
+      "title": "2025",
+      "slug": "Album/2025",
+      "path": "/photographs/Album/2025",
+      "date": "2025-06-15",
+      "content": "\n## 新疆\n\n![新疆](/images/photographs/2025/xinjiang_1.JPG)\n*新疆*"
+    }
+  ]
+}
