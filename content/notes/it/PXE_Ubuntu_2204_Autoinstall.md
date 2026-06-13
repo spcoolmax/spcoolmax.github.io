@@ -9,6 +9,25 @@ date: "2026-06-13"
 
 这里记录一下完整过程。涉及密码的地方都做了脱敏，不要把 sudo 密码、系统登录密码、Wi-Fi 密码这种东西写进公开仓库。
 
+## 脚本和配置模板
+
+这次用到的脚本和配置，我放了一份脱敏模板在这里：
+
+* [README](/files/pxe-ubuntu-2204-autoinstall/README.md)
+* [dnsmasq-pxe.conf](/files/pxe-ubuntu-2204-autoinstall/dnsmasq-pxe.conf)
+* [embedded-grub.cfg](/files/pxe-ubuntu-2204-autoinstall/embedded-grub.cfg)
+* [grub-mkimage.sh](/files/pxe-ubuntu-2204-autoinstall/grub-mkimage.sh)
+* [user-data](/files/pxe-ubuntu-2204-autoinstall/user-data)
+* [meta-data](/files/pxe-ubuntu-2204-autoinstall/meta-data)
+* [vendor-data](/files/pxe-ubuntu-2204-autoinstall/vendor-data)
+* [netplan-wifi-static.yaml](/files/pxe-ubuntu-2204-autoinstall/netplan-wifi-static.yaml)
+* [disable-cloud-init-network.cfg](/files/pxe-ubuntu-2204-autoinstall/disable-cloud-init-network.cfg)
+* [wifi-watchdog.sh](/files/pxe-ubuntu-2204-autoinstall/wifi-watchdog.sh)
+* [wifi-watchdog.service](/files/pxe-ubuntu-2204-autoinstall/wifi-watchdog.service)
+* [wifi-watchdog.timer](/files/pxe-ubuntu-2204-autoinstall/wifi-watchdog.timer)
+
+里面所有 `<...>` 都是占位符，部署前要替换成自己的网卡名、PXE 服务器 IP、目标 MAC、密码 hash、Wi-Fi SSID 等。模板里没有保留真实密码。
+
 ## 网络拓扑
 
 现场网络里已经有一个路由器在发 DHCP，所以 PXE 服务器不能再开一个完整 DHCP，否则很容易把整个网段搞乱。最后采用的是 `dnsmasq` 的 proxy-DHCP 模式：

@@ -1,0 +1,21 @@
+#cloud-config
+autoinstall:
+  version: 1
+  locale: en_US.UTF-8
+  keyboard:
+    layout: us
+  identity:
+    hostname: <TARGET_HOSTNAME>
+    username: <INSTALL_USERNAME>
+    password: "<SHA512_CRYPT_PASSWORD_HASH>"
+  ssh:
+    install-server: true
+    allow-pw: true
+  storage:
+    layout:
+      name: lvm
+  packages:
+    - openssh-server
+  updates: security
+  late-commands:
+    - curtin in-target --target=/target -- systemctl enable ssh

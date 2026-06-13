@@ -1,0 +1,2 @@
+instance-id: ubuntu-22-04-autoinstall
+local-hostname: <TARGET_HOSTNAME>

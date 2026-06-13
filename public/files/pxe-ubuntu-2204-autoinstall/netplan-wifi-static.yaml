@@ -1,0 +1,22 @@
+network:
+  version: 2
+  renderer: networkd
+  wifis:
+    <WIFI_INTERFACE>:
+      optional: true
+      dhcp4: false
+      addresses:
+        - <WIFI_STATIC_IP_CIDR>
+      routes:
+        - to: default
+          via: <LAN_GATEWAY>
+          metric: 600
+      nameservers:
+        addresses:
+          - <LAN_DNS>
+          - 8.8.8.8
+      access-points:
+        "<WIFI_SSID_5G>":
+          password: "<WIFI_PASSWORD>"
+        "<WIFI_SSID_FALLBACK>":
+          password: "<WIFI_PASSWORD>"

@@ -1,0 +1,8 @@
+[Unit]
+Description=Check and recover Wi-Fi connection
+Wants=network-online.target
+After=systemd-networkd.service netplan-wpa-<WIFI_INTERFACE>.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/wifi-watchdog.sh
